@@ -174,6 +174,14 @@ app.get('/all-users', (req, res) => {
 app.get('/', (req, res) => {
   res.send('Backend is working!');
 });
+// Admin route to view all data
+app.get('/admin', async (req, res) => {
+  try {
+    res.json(userData); // assuming userData is your in-memory object
+  } catch (err) {
+    res.status(500).json({ error: "Error fetching data" });
+  }
+});
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
