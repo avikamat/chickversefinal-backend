@@ -1,17 +1,12 @@
 {
-  "name": "nodejs",
+  "name": "chickverse-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Backend for Chickverse",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "@types/node": "^22.13.11",
     "alchemy-sdk": "^3.6.0",
     "axios": "^1.10.0",
     "body-parser": "^2.2.0",
