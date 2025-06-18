@@ -4,6 +4,8 @@ const { Alchemy, Network } = require('alchemy-sdk');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const connectDB = require("./config/db");
+connectDB();
 
 app.use(cors());
 app.use(express.json());
