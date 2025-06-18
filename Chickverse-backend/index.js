@@ -184,6 +184,34 @@ app.get('/admin', async (req, res) => {
     res.status(500).json({ error: "Error fetching data" });
   }
 });
+const User = require("./models/User");
+
+// Join route: /join
+app.post("/join", async (req, res) => {
+  const { wallet } = req.body;
+
+  if (!wallet) {
+    return res.status(400).json({ error: "Wallet address is required" });
+  }
+
+  try {
+    let user = await User.findOne({ wallet });
+
+    if (!user) {
+      user = new User({ wallet });
+      await user.save();
+    }
+
+    return res.json({
+      wallet: user.wallet,
+      xp: user.xp,
+      completedQuests: user.completedQuests,
+    });
+  } catch (err) {
+    console.error("Join error:", err);
+    res.status(500).json({ error: "Server error" });
+  }
+});
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
